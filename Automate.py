@@ -2,6 +2,15 @@ import bpy
 import os
 from easybpy import *
 
+colors = {
+    "Black":(0,0,0,1)
+    ,"White":(1,1,1,1)
+    ,"LightSalmon":(1,0.63,0.48,1)
+    ,"Gold":(1,0.843,0,1)
+    }
+
+number = 0
+
 def render(number):
     output_dir = r'C:\Users\Krow\Documents\Uni\PI\renders\test'
     output_file_pattern_string = 'test%d.jpg'
@@ -15,13 +24,22 @@ def turn_off_lights():
           hide_in_render(light)
 
 def loop_light():
+    global number
     lights = get_objects_from_collection("Lights")
-    number = 0
     for light in lights:
         show_in_render(light)
         render(number)
         number = number + 1
         hide_in_render(light)
+
+def change_color(color):
+    obj = bpy.context.object
+    bpy.data.materials["Material"].node_tree.nodes["Principled BSDF"].inputs[0].default_value = color
         
-turn_off_lights()
-loop_light()
+def main_loop():
+    turn_off_lights()
+    for color in colors:
+        change_color(colors[color])
+        loop_light()
+
+main_loop()
