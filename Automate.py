@@ -9,7 +9,13 @@ colors = {
     ,"LightSalmon":(1,0.63,0.48,1)
     ,"Gold":(1,0.843,0,1)
     }
+    
+lengths = [1, 0.9, 1.1, 1.15]
 
+thickness = [1, 0.8, 1.1, 1.15]
+
+bones = ["thumb.02.R", "thumb.03.R", "finger_index.01.R", "finger_index.02.R", "finger_index.03.R", "finger_ring.01.R", "finger_ring.02.R", "finger_ring.03.R", "finger_pinky.01.R", "finger_pinky.02.R", "finger_pinky.03.R", "finger_middle.01.R", "finger_middle.02.R", "finger_middle.03.R"]
+    
 number = 0
 
 
@@ -39,18 +45,29 @@ def change_color(color):
     obj = bpy.context.object
     bpy.data.materials["Material"].node_tree.nodes["Principled BSDF"].inputs[0].default_value = color
     
-def transform_fingers():
-    armature = bpy.data.armatures["Armature.002"]["Cube.005"]    
-    print(armature)
-    
+
 def main_loop():
     turn_off_lights()
     cameras = get_objects_from_collection("Cameras")
     for color in colors:
         for camera in cameras:
-            change_color(colors[color])
-            loop_light(camera)
-    
+            for length in lengths: 
+                print(length)
+                for thick in thickness:
+                    change_bone_scale(length, thick)
+                    
+                    change_color(colors[color])
+                    loop_light(camera)
+                    
+                    change_bone_scale(1,1)
+
+     
+def change_bone_scale(length, thickness):
+    armature = bpy.data.objects["Armature"]
+    for bone in bones:
+        pb = armature.pose.bones.get(bone)
+        pb.scale = (thickness, length, 1)
+        
+
 
 main_loop()
-#transform_fingers()
