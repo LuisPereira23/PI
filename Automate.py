@@ -39,7 +39,10 @@ def change_color(color):
     obj = bpy.context.object
     bpy.data.materials["Material"].node_tree.nodes["Principled BSDF"].inputs[0].default_value = color
     
-  
+def transform_fingers():
+    armature = bpy.data.armatures["Armature.002"]["Cube.005"]    
+    print(armature)
+    
 def main_loop():
     turn_off_lights()
     cameras = get_objects_from_collection("Cameras")
@@ -50,3 +53,4 @@ def main_loop():
     
 
 main_loop()
+#transform_fingers()
