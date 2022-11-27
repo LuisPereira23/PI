@@ -8,21 +8,21 @@ colors = {
     ,"White":(1,1,1,1)
     ,"LightSalmon":(1,0.63,0.48,1)
     ,"Gold":(1,0.843,0,1)
-    ,"Olive":(0.375,0.852,0.137)
+    ,"Olive":(0.375,0.852,0.137,1)
     }
     
-lengths = [1, 0.9, 1.1, 1.15]
+lengths = [1, 0.95, 1.1, 1.13]
 
-thickness = [1, 0.8, 1.1, 1.15]
+thickness = [1, 0.9, 1.1, 1.13]
 
-bones = ["thumb.02.R", "thumb.03.R", "finger_index.01.R", "finger_index.02.R", "finger_index.03.R", "finger_ring.01.R", "finger_ring.02.R", "finger_ring.03.R", "finger_pinky.01.R", "finger_pinky.02.R", "finger_pinky.03.R", "finger_middle.01.R", "finger_middle.02.R", "finger_middle.03.R", "hand.R", "forearm.R"]
+bones = ["thumb.02.R", "thumb.03.R", "finger_index.01.R", "finger_index.02.R", "finger_index.03.R", "finger_ring.01.R", "finger_ring.02.R", "finger_ring.03.R", "finger_pinky.01.R", "finger_pinky.02.R", "finger_pinky.03.R", "finger_middle.01.R", "finger_middle.02.R", "finger_middle.03.R", "hand.R"]
     
 number = 0
 
 
 def render(number, camera):
-    output_dir = r'C:\Users\Krow\Documents\Uni\PI\renders\A'
-    output_file_pattern_string = 'A%d.jpg'
+    output_dir = r'C:\Users\Krow\Documents\Uni\PI\renders\B'
+    output_file_pattern_string = 'B%d.jpg'
     
     bpy.context.scene.camera = camera
     bpy.context.scene.render.filepath = os.path.join(output_dir, (output_file_pattern_string % number))
@@ -72,4 +72,4 @@ def change_bone_scale(length, thickness):
 
 
 main_loop()
-#change_bone_scale(1,1)
+#change_bone_scale(0.9,1)
