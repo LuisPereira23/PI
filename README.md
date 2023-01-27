@@ -6,7 +6,6 @@ will focus on the image recognition of different letters in American Sign Langua
 generation of synthetic datasets. The main goal is to generate synthetic datasets using a 3D hand
 model and see if they can be used for sign language recognition on par with real datasets.
 
-Team project developted by:
 ##### Authors
  - [Luís Pereira](https://github.com/LuisPereira23)
  - [Tiago Sousa](https://github.com/Existency)
